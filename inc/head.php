@@ -1,3 +1,9 @@
+<?php session_start() ?>
+<?php
+if (isset($_POST['logout'])):
+    session_destroy();
+    header("Location: /");
+endif;?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,6 +37,16 @@
                 </a>
             </div>
 
+            <?php if (empty($_SESSION['login'])) :
+                echo '<a href="../login.php">Login</a>';
+            endif;?>
+
+            <?php if (!empty($_SESSION['login'])) :
+                echo '<form action="../index.php" method="post">
+                <input type="submit" name="logout" value="logout">
+            </form>';
+            endif;?>
+
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
@@ -48,6 +64,6 @@
         </div><!-- /.container-fluid -->
     </nav>
     <div class="container-fluid text-right">
-        <strong>Hello Wilder !</strong>
+        <strong>Hello <?= $_SESSION['login']?> !</strong>
     </div>
 </header>

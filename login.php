@@ -1,4 +1,15 @@
+<?php
+if (isset($_SESSION['login']))
+    header("Location: /");
+?>
+
 <?php require 'inc/head.php'; ?>
+<?php
+if (isset($_POST['submit-btn'])) {
+    $_SESSION['login'] = $_POST['loginname'];
+    header("Location: /");
+}
+?>
 <div class="container" style="margin-top:40px">
     <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
@@ -28,7 +39,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign in">
+                                        <input type="submit" class="btn btn-lg btn-primary btn-block" name="submit-btn" value="Sign in">
                                     </div>
                                 </div>
                             </div>
