@@ -2,6 +2,13 @@
 <?php require 'inc/head.php'; ?>
 <?php
 
+
+if (isset($_GET['add_to_cart'])) {
+    $_SESSION['panier'][] = $_GET['add_to_cart'];
+    header('Location: index.php');
+
+}
+
 ?>
 <section class="cookies container-fluid">
     <div class="row">

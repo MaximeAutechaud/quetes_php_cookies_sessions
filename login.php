@@ -5,7 +5,7 @@ if (isset($_SESSION['login']))
 
 <?php require 'inc/head.php'; ?>
 <?php
-if (isset($_POST['submit-btn'])) {
+if (isset($_POST['loginname'])) {
     $_SESSION['login'] = $_POST['loginname'];
     header("Location: /");
 }
